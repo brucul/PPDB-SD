@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('school_name');
             $table->text('school_address');
-            $table->integer('registration_quota');
             $table->integer('zonasi_quota');
             $table->integer('prestasi_quota');
             $table->string('school_year');

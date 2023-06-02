@@ -30,7 +30,7 @@ Route::group(['namespace' => 'Frontend', 'as' => 'fe.'], function() {
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'be.'], function() {
     
-    Route::group(['middleware' => 'guest', 'prefix' => 'auth'], function() {
+    Route::group(['prefix' => 'auth'], function() {
         Route::get('/login', 'AuthController@showLogin')->name('auth.login');
         Route::post('/do-login', 'AuthController@doLogin')->name('auth.do-login');
         Route::get('/logout', 'AuthController@logout')->name('auth.logout');
@@ -64,7 +64,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'be.'], fun
             Route::get('/json', 'RegistrationController@json')->name('ppdb.json');
             Route::get('/{id}', 'RegistrationController@show')->name('ppdb.show');
             Route::post('/update', 'RegistrationController@update')->name('ppdb.update');
-            Route::post('/download', 'RegistrationController@download')->name('ppdb.download');
+            Route::post('/make-zip', 'RegistrationController@makeZip')->name('ppdb.makezip');
+            Route::get('/download/{file}', 'RegistrationController@download')->name('ppdb.download');
         });
     });
 });

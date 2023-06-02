@@ -5,7 +5,7 @@
         </div>
 
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="#"></a>
+            <a href="#"><img src="{{ asset('assets/img/logo-sd.png') }}" width="40%"></a>
         </div>
 
         <ul class="sidebar-menu">
