@@ -9,7 +9,8 @@
             <div class="col s12">
                 <table id="table-student" class="display">
                     <thead>
-                        <th>Nomor Pendataran</th>
+                        <th>No. Pendataran</th>
+                        <th>Jalur</th>
                         <th>Nama Lengkap</th>
                         <th>Jenis Kelamin</th>
                         <th>Tempat, Tanggal Lahir</th>
@@ -65,6 +66,10 @@
                 {
                     data: 'registration_number',
                     name: 'registration_number',
+                },
+                {
+                    data: 'type',
+                    name: 'type',
                 },
                 {
                     data: 'fullname',

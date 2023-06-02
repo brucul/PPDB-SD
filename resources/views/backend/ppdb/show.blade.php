@@ -355,6 +355,23 @@
                             </td>
                         </tr>
                     </table>
+                    @if($student->otherDocuments)
+                    <h6 class="section-title">Sertifikat Prestasi</h6>
+                    <table class="table table-md table-striped">
+                        <tr>
+                            <td>Nama Sertifikat</td>
+                            <td>Dokumen Sertifikat</td>
+                        </tr>
+                        @foreach($student->otherDocuments as $doc)
+                        <tr>
+                            <td>{{ $doc->name ?? '-' }}</td>
+                            <td>
+                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-pdf" data-title="{{ $doc->name }}" data-file="{{ asset('storage/documents/'.$student->id.'/'.$doc->file) }}" data-type="{{ explode('.', $doc->file)[1] }}">Lihat Dokumen</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                    @endif
                 </div>
             </div>
         </div>
@@ -411,36 +428,41 @@
                         swal('Success', response.message, 'success')
                         $('#status-title').html(response.badge)
                     } else {
-                        swal('Error', response.message, 'error')
+                        swal('Failed', response.message, 'error')
                     }
                 },
                 error: function(xhr, AbsenceType, error) {
-                    swal('Error', xhr.responseJSON.message, 'error')
+                    swal('Failed', xhr.responseJSON.message, 'error')
                 }
             })
         })
 
         $('#btn-download').on('click', (e) => {
+            var id = "{{ $student->id }}"
             $.ajax({
-                url : "{{ route('be.ppdb.download') }}",
+                url : "{{ route('be.ppdb.makezip') }}",
                 method : "post",
                 data : {
-                    id: "{{ $student->id }}"
+                    id: id
                 },
                 cache : false,
-                contentType: false,
-                processData: false,
+                beforeSend: function () {
+                   $('#btn-download').addClass('disabled btn-progress')
+                },
                 success : function(response) {
                     if(response.status) {
                         swal('Success', response.message, 'success')
-                        $('#status-title').html(response.badge)
+                        window.open(response.download_url, '_blank')
                     } else {
-                        swal('Error', response.message, 'error')
+                        swal('Failed', response.message, 'error')
                     }
                 },
                 error: function(xhr, AbsenceType, error) {
-                    swal('Error', xhr.responseJSON.message, 'error')
-                }
+                    swal('Failed', xhr.responseJSON.message, 'error')
+                },
+                complete: function () {
+                   $('#btn-download').removeClass('disabled btn-progress')
+                },
             })
         })
     })
