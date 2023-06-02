@@ -342,6 +342,23 @@
                                 </td>
                             </tr>
                         </table>
+                        @if($student->otherDocuments)
+                        <h6 class="section-title">Sertifikat Prestasi</h6>
+                        <table class="table table-md table-striped">
+                            <tr>
+                                <td>Nama Sertifikat</td>
+                                <td>Dokumen Sertifikat</td>
+                            </tr>
+                            @foreach($student->otherDocuments as $doc)
+                            <tr>
+                                <td>{{ $doc->name ?? '-' }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-pdf" data-title="{{ $doc->name }}" data-file="{{ asset('storage/documents/'.$student->id.'/'.$doc->file) }}" data-type="{{ explode('.', $doc->file)[1] }}">Lihat Dokumen</button>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </table>
+                        @endif
                     </div>
                 </div>
             </div>

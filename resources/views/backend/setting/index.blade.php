@@ -51,17 +51,12 @@
                                         <input type="text" class="form-control" name="end_date" id="end_date" value="{{ !$setting ? null : $setting->end_date }}" required>
                                         <div class="" id="message-end_date"></div>
                                     </div>
-                                    <div class="form-group col-lg-4 col-sm-12">
-                                        <label for="registration_quota">Kuota Pendaftaran<span class="text-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="Masukkan Kuota Pendaftaran" name="registration_quota" id="registration_quota" value="{{ !$setting ? null : $setting->registration_quota }}" min="1" required>
-                                        <div class="" id="message-registration_quota"></div>
-                                    </div>
-                                    <div class="form-group col-lg-4 col-sm-12">
+                                    <div class="form-group col-lg-6 col-sm-12">
                                         <label for="zonasi_quota">Kuota Zonasi<span class="text-danger">*</span></label>
                                         <input type="number" class="form-control" placeholder="Masukkan Kuota Zonasi" name="zonasi_quota" id="zonasi_quota" value="{{ !$setting ? null : $setting->zonasi_quota }}" min="0" required>
                                         <div class="" id="message-zonasi_quota"></div>
                                     </div>
-                                    <div class="form-group col-lg-4 col-sm-12">
+                                    <div class="form-group col-lg-6 col-sm-12">
                                         <label for="prestasi_quota">Kuota Prestasi<span class="text-danger">*</span></label>
                                         <input type="number" class="form-control" placeholder="Masukkan Kuota Prestasi" name="prestasi_quota" id="prestasi_quota" value="{{ !$setting ? null : $setting->prestasi_quota }}" min="0" required>
                                         <div class="" id="message-prestasi_quota"></div>
@@ -105,7 +100,7 @@
             locale: {format: 'YYYY-MM-DD'},
             singleDatePicker: true,
             autoApply: true,
-            minDate: moment(),
+            // minDate: moment(),
         });
 
         new Cleave('#school_year', {

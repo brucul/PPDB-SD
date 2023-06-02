@@ -21,7 +21,7 @@
             <div class="card-header">
                 <h4>Jalur Zonasi</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('fe.registration.zonasi') }}" class="btn btn-primary">
+                    <a href="{{ route('fe.registration.zonasi') }}" class="btn btn-primary {{ ((date('Y-m-d') >= getSetting()->start_date) && (date('Y-m-d') <= getSetting()->end_date)) ?: 'disabled' }}">
                         Daftar
                     </a>
                 </div>
@@ -37,7 +37,7 @@
             <div class="card-header">
                 <h4>Jalur Prestasi</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('fe.registration.prestasi') }}" class="btn btn-primary">
+                    <a href="{{ route('fe.registration.prestasi') }}" class="btn btn-primary {{ ((date('Y-m-d') >= getSetting()->start_date) && (date('Y-m-d') <= getSetting()->end_date)) ?: 'disabled' }}">
                         Daftar
                     </a>
                 </div>

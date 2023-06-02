@@ -16,11 +16,15 @@ class RegistrationController extends Controller
 {
     public function zonasi()
     {
+        ((date('Y-m-d') >= getSetting()->start_date) && (date('Y-m-d') <= getSetting()->end_date)) ?: abort(419);
+
         return view('frontend.registration.index');
     }
 
     public function prestasi()
     {
+        ((date('Y-m-d') >= getSetting()->start_date) && (date('Y-m-d') <= getSetting()->end_date)) ?: abort(419);
+
         return view('frontend.registration.index');
     }
 

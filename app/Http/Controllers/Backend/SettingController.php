@@ -27,9 +27,8 @@ class SettingController extends Controller
             'school_name' => 'required',
             'school_year' => 'required',
             'school_address' => 'required',
-            'registration_quota' => 'required|integer|min:1',
-            'zonasi_quota' => 'required|integer|lte:registration_quota',
-            'prestasi_quota' => 'required|integer|lte:registration_quota',
+            'zonasi_quota' => 'required|integer',
+            'prestasi_quota' => 'required|integer',
             'start_date' => 'required|date',
             'end_date' => 'required|date',
         ];
@@ -45,23 +44,12 @@ class SettingController extends Controller
             ]);
         }
 
-        if (($request->zonasi_quota + $request->prestasi_quota) < $request->registration_quota) {
-            return response()->json([
-                'status' => false,
-                'errors' => [
-                    'zonasi_quota' => ['The zonasi quota + the prestasi quota must be equal to registration quota'],
-                    'prestasi_quota' => ['The prestasi quota + the zonasi quota must be equal to registration quota'],
-                ],
-            ]);
-        }
-
         $setting = Setting::updateOrCreate([
             'id' => 1
         ], [
             'school_name' => $request->school_name,
             'school_year' => $request->school_year,
             'school_address' => $request->school_address,
-            'registration_quota' => $request->registration_quota,
             'zonasi_quota' => $request->zonasi_quota,
             'prestasi_quota' => $request->prestasi_quota,
             'start_date' => $request->start_date,
