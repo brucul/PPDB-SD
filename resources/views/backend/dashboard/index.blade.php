@@ -19,7 +19,7 @@
                         <h4>Total Operator</h4>
                     </div>
                     <div class="card-body">
-                        10
+                        {{$operator}}
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                         <h4>Total Pendaftar</h4>
                     </div>
                     <div class="card-body">
-                        42
+                        {{$zonasi + $prestasi}}
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                         <h4>Total Pendaftar (Zonasi)</h4>
                     </div>
                     <div class="card-body">
-                        1,201
+                        {{$zonasi}}
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                         <h4>Total Pendaftar (Prestasi)</h4>
                     </div>
                     <div class="card-body">
-                        47
+                        {{$prestasi}}
                     </div>
                 </div>
             </div>
