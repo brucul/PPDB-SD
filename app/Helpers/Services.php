@@ -54,5 +54,5 @@ function dateToIndo($date)
 
 function getSetting()
 {
-    return Setting::find(2);
+    return Setting::find(1);
 }
