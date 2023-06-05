@@ -11,13 +11,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $setting = Setting::first();
-        return view('frontend.home.index', compact('setting'));
+        return view('frontend.home.index');
     }
 
     public function instruction()
     {
-        $setting = Setting::first();
-        return view('frontend.home.instruction', compact('setting'));
+        return view('frontend.home.instruction');
     }
 }

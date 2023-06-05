@@ -7,7 +7,7 @@
             <div class="hero-inner">
                 <h2>Hallo!</h2>
                 <p class="lead">Selamat datang di Sistem PPDB online SD Negeri 49 Kota Parepare.</p>
-                <p style="font-size: 80%">Pendaftaran dibuka tanggal <b class="text-info">{{$setting->start_date->format('d F Y')}}</b> sampai <b class="text-info">{{$setting->end_date->format('d F Y')}}</b>.</p>
+                <p style="font-size: 80%">Pendaftaran dibuka tanggal <b class="text-info">{{getSetting()->start_date->format('d F Y')}}</b> sampai <b class="text-info">{{getSetting()->end_date->format('d F Y')}}</b>.</p>
                 <div class="mt-4">
                     <a href="{{ route('fe.instruction') }}" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="fas fa-circle-info"></i> Lihat Petunjuk Pendaftaran</a>
                     <button class="btn btn-info btn-lg btn-icon icon-left ml-2 btn-search-student"><i class="fas fa-circle-question"></i> Sudah daftar? Lihat Status</button>
@@ -21,7 +21,7 @@
             <div class="card-header">
                 <h4>Jalur Zonasi</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('fe.registration.zonasi') }}" class="btn btn-primary {{ ((date('Y-m-d') >= getSetting()->start_date) && (date('Y-m-d') <= getSetting()->end_date)) ?: 'disabled' }}">
+                    <a href="{{ route('fe.registration.zonasi') }}" class="btn btn-primary {{ ((date('Y-m-d') >= getSetting()->start_date->format('Y-m-d')) && (date('Y-m-d') <= getSetting()->end_date->format('Y-m-d'))) ?: 'disabled' }}">
                         Daftar
                     </a>
                 </div>
@@ -37,7 +37,7 @@
             <div class="card-header">
                 <h4>Jalur Prestasi</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('fe.registration.prestasi') }}" class="btn btn-primary {{ ((date('Y-m-d') >= getSetting()->start_date) && (date('Y-m-d') <= getSetting()->end_date)) ?: 'disabled' }}">
+                    <a href="{{ route('fe.registration.prestasi') }}" class="btn btn-primary {{ ((date('Y-m-d') >= getSetting()->start_date->format('Y-m-d')) && (date('Y-m-d') <= getSetting()->end_date->format('Y-m-d'))) ?: 'disabled' }}">
                         Daftar
                     </a>
                 </div>

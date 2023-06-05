@@ -12,7 +12,7 @@
                 <h4>Petunjuk Pendaftaran</h4>
             </div>
             <div class="card-body">
-                {!! $setting->instruction !!}
+                {!! getSetting()->instruction !!}
             </div>
         </div>
     </div>
