@@ -94,7 +94,7 @@ class RegistrationController extends Controller
                 }
 
                 $student->document()->create($documents);
-
+                activity('registration')->causedBy($student)->withProperties(['user_agent' => $request->header('User-Agent')])->log('student registration');
                 DB::commit();
                 return response()->json([
                     'status' => true,

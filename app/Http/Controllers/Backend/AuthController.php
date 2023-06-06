@@ -37,7 +37,7 @@ class AuthController extends Controller
             if (Hash::check($request->password, $user->password)) {
 
                 Auth::attempt(['username' => $request->username, 'password' => $request->password], $request->remember ? true : false);
-
+                activity('login')->withProperties(['user_agent' => $request->header('User-Agent')])->log('user login');
                 return redirect()->route('be.index');
             }
             else {
@@ -48,8 +48,9 @@ class AuthController extends Controller
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
+        activity('logout')->withProperties(['user_agent' => $request->header('User-Agent')])->log('user logout');
         Auth::logout();
         return redirect()->route('be.auth.login');
     }

@@ -111,6 +111,7 @@ class RegistrationController extends Controller
 
         $update = $student->update(['status' => $request->status]);
         if ($update) {
+            activity('update')->performedOn($student)->withProperties(['user_agent' => $request->header('User-Agent')])->log('update status siswa ke '.($request->status == 1 ? 'lolos' : 'tidak lolos'));
             return response()->json([
                 'status' => true,
                 'message' => 'Data Updated',

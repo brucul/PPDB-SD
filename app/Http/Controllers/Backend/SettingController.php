@@ -56,6 +56,7 @@ class SettingController extends Controller
             'end_date' => $request->end_date,
         ]);
 
+        activity('update')->performedOn($setting)->withProperties(['user_agent' => $request->header('User-Agent')])->log('update setting');
         return response()->json([
             'status' => true,
             'message' => 'Data Updated',
@@ -71,6 +72,7 @@ class SettingController extends Controller
             'instruction' => $request->instruction,
         ]);
 
+        activity('update')->performedOn($setting)->withProperties(['user_agent' => $request->header('User-Agent')])->log('update setting');
         return response()->json([
             'status' => true,
             'message' => 'Data Updated',

@@ -31,7 +31,7 @@
                             <label class="custom-file-label" for="image">Choose Image</label>
                         </div>
                     </div>
-                    <span class="text-warning"><i>*Leave blank if you don't want to change the image</i></span>
+                    <span class="text-warning" style="font-size: 80%;"><i>*Leave blank if you don't want to change the image</i></span>
                 </div>
                 <div class="form-group col-6">
                     <label>Password</label>
@@ -44,7 +44,7 @@
                     <div class="invalid-feedback">
                         Password is invalid.
                     </div>
-                    <span class="text-warning"><i>*Leave blank if you don't want to change the password</i></span>
+                    <span class="text-warning" style="font-size: 80%;"><i>*Leave blank if you don't want to change the password</i></span>
                 </div>
                 <div class="form-group col-6">
                     <img id="preview" src="{{ auth()->user()->image ? asset('storage/user/images/'.auth()->user()->image) : asset('assets/img/avatar/avatar-1.png') }}" alt="your image" width="180" height="180">

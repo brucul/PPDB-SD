@@ -67,5 +67,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'be.'], fun
             Route::post('/make-zip', 'RegistrationController@makeZip')->name('ppdb.makezip');
             Route::get('/download/{file}', 'RegistrationController@download')->name('ppdb.download');
         });
+
+        Route::group(['prefix' => 'activity-log', 'middleware' => 'role:superadmin'], function() {
+            Route::get('/', 'ActivityLogController@index')->name('activity.index');
+            Route::get('/json', 'ActivityLogController@json')->name('activity.json');
+        });
     });
 });

@@ -28,6 +28,12 @@
                     <i class="fas fa-users"></i> <span>Data Operator</span>
                 </a>
             </li>
+
+            <li class="{{ Request::routeIs('be.activity.index') ? "active" : "" }}">
+                <a class="nav-link" href="{{ route('be.activity.index') }}">
+                    <i class="fas fa-timeline"></i> <span>Activity Log</span>
+                </a>
+            </li>
             @endhasrole
             <li class="{{ Request::routeIs('be.setting.index') ? "active" : "" }}">
                 <a class="nav-link" href="{{ route('be.setting.index') }}">

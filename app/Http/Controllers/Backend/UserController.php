@@ -229,7 +229,7 @@ class UserController extends Controller
         }
 
         $user->update($this->credentials($request, $password, $image));
-
+        activity('update')->withProperties(['user_agent' => $request->header('User-Agent')])->log('update profile');
         alert()->success('Success', 'Data Updated');
         return back();
     }
