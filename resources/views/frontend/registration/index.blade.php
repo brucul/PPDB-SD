@@ -397,6 +397,7 @@
             $('#form-3').find("span.text-danger").each(function(key, item){
                 $(item).attr('hidden', false)
             });
+            $('i.text-wali').attr('hidden', true)
         } else {
             $('#form-3').find("input[type=text]").each(function(key, input){
                 $(input).attr('required', false)
@@ -404,6 +405,7 @@
             $('#form-3').find("span.text-danger").each(function(key, item){
                 $(item).attr('hidden', true)
             });
+            $('i.text-wali').attr('hidden', false)
         }
     }
 

@@ -1,6 +1,7 @@
 <form id="form-3" class="row row-cols-1 ms-5 me-5 needs-validation" novalidate autocomplete="off">
     <div class="col-sm-12">
         <h4 class="text-primary" align="center">Data Wali</h4>
+        <i class="text-wali text-primary" style="font-size: 80%;"><b>*Lewati form ini jika Orang Tua masih hidup.</b></i>
         <hr>
     </div>
     <div class="col-lg-12 col-sm-12">
