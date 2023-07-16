@@ -62,7 +62,7 @@
                                         <div class="" id="message-prestasi_quota"></div>
                                     </div>
                                     <div class="col-lg-12 col-sm-12" align="right">
-                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <button type="submit" class="btn btn-primary btn-submit">Update</button>
                                     </div>
                                 </form>
                             </div>
@@ -72,7 +72,7 @@
                                         <textarea name="instruction" class="form-control summernote" id="instruction">{{ !$setting ? null : $setting->instruction }}</textarea>
                                     </div>
                                     <div class="col-lg-12 col-sm-12" align="right">
-                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <button type="submit" class="btn btn-primary btn-submit">Update</button>
                                     </div>
                                 </form>
                             </div>
@@ -111,6 +111,7 @@
 
         $('#setting-form').submit( (e) => {
             e.preventDefault()
+            var btn = $('.btn-submit')
 
             $.ajax({
                 url : "{{ route('be.setting.update') }}",
@@ -119,6 +120,9 @@
                 contentType: false,
                 processData: false,
                 data : new FormData($('#setting-form').get(0)),
+                beforeSend: function () {
+                   btn.addClass('disabled btn-progress')
+                },
                 success : function(response) {
                     if(response.status) {
                         swal('Success', response.message, 'success')
@@ -157,12 +161,16 @@
                             position: 'topRight'
                         })
                     })
-                }
+                },
+                complete: function () {
+                   btn.removeClass('disabled btn-progress')
+                },
             })
         })
 
         $('#instruction-form').submit( (e) => {
             e.preventDefault()
+            var btn = $('.btn-submit')
 
             $.ajax({
                 url : "{{ route('be.setting.update-instruction') }}",
@@ -171,6 +179,9 @@
                 contentType: false,
                 processData: false,
                 data : new FormData($('#instruction-form').get(0)),
+                beforeSend: function () {
+                   btn.addClass('disabled btn-progress')
+                },
                 success : function(response) {
                     if(response.status) {
                         swal('Success', response.message, 'success')
@@ -186,7 +197,10 @@
                             position: 'topRight'
                         })
                     })
-                }
+                },
+                complete: function () {
+                   btn.removeClass('disabled btn-progress')
+                },
             })
         })
     })
