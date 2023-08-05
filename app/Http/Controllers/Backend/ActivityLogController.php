@@ -23,7 +23,7 @@ class ActivityLogController extends Controller
                 return $row->created_at->format('d F Y - H:i:s');
             })
             ->editColumn('causer', function ($row) {
-                return $row->causer->name;
+                return $row->causer->name ?? null;
             })
             ->rawColumns(['action'])
             ->addIndexColumn()
